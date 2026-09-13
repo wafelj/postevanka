@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#5b4cdb" />
-    <title>Brinina poštevanka</title>
+    <title>Raketna poštevanka</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet" />
@@ -12,12 +12,37 @@
   </head>
   <body>
     <main class="app-shell">
-      <section id="welcome" class="screen welcome-screen" aria-labelledby="welcome-title">
+      <section id="name" class="screen name-screen hidden" aria-labelledby="name-title">
+        <div class="mascot" aria-hidden="true"><span>🚀</span><i>★</i></div>
+        <p class="eyebrow">PRVA ODPRAVA</p>
+        <h1 id="name-title">Ustvari svojo<br /><em>vesoljsko izkaznico</em></h1>
+        <p class="intro">Izberi astronavta in vpiši podatke<br />za svojo prvo odpravo.</p>
+        <form id="nameForm" class="name-form" autocomplete="off">
+          <label class="sr-only" for="nameInput">Tvoje ime</label>
+          <input id="nameInput" type="text" maxlength="24" placeholder="Vpiši ime" required autofocus />
+          <label class="sr-only" for="ageInput">Tvoja starost</label>
+          <input id="ageInput" type="number" min="3" max="18" inputmode="numeric" placeholder="Koliko si star/-a?" required />
+          <fieldset class="avatar-picks">
+            <legend>Izberi astronavta</legend>
+            <button type="button" class="avatar-pick active" data-avatar="🧑‍🚀" aria-label="Astronavt" aria-pressed="true">🧑‍🚀</button>
+            <button type="button" class="avatar-pick" data-avatar="👩‍🚀" aria-label="Astronavtka" aria-pressed="false">👩‍🚀</button>
+            <button type="button" class="avatar-pick" data-avatar="👨‍🚀" aria-label="Astronavt" aria-pressed="false">👨‍🚀</button>
+            <button type="button" class="avatar-pick" data-avatar="🤖" aria-label="Robot astronavt" aria-pressed="false">🤖</button>
+          </fieldset>
+          <button class="primary-button" type="submit">Začni potovanje <span>→</span></button>
+        </form>
+      </section>
+
+      <section id="welcome" class="screen welcome-screen hidden" aria-labelledby="welcome-title">
         <div class="cloud cloud-one"></div><div class="cloud cloud-two"></div>
         <div class="mascot" aria-hidden="true"><span>🚀</span><i>★</i></div>
-        <p class="eyebrow">BRININA HITRA MISEL</p>
+        <p class="eyebrow">RAKETNA POŠTEVANKA</p>
         <h1 id="welcome-title">Poštevanka<br /><em>na raketni pogon!</em></h1>
         <p class="intro">Reši 10 različnih naključnih računov<br />in zbiraj opremo za potovanje med zvezdami!</p>
+        <section class="identity-card" aria-label="Vesoljska izkaznica">
+          <span id="playerAvatar" class="profile-avatar" aria-hidden="true">🧑‍🚀</span>
+          <div><span>VESOLJSKA IZKAZNICA</span><b id="cardName">—</b><small id="cardAge">— let</small></div>
+        </section>
         <section class="home-stats" aria-label="Skupni napredek">
           <div><span>SKUPNE TOČKE</span><b id="totalScore">0</b></div>
           <div><span>NASLEDNJI 💎 PREDMET</span><b><i id="pointsToDiamond">500</i> točk</b></div>
@@ -47,7 +72,7 @@
           <button id="startBtn" class="primary-button">Začni pustolovščino <span>→</span></button>
         </div>
         <section class="collection-card" aria-labelledby="collection-title">
-          <div class="collection-heading"><span id="collection-title">🧳 Brinina potovalna zbirka</span><b id="collectionCount">0 predmetov</b></div>
+          <div class="collection-heading"><span id="collection-title">🧳 Tvoja potovalna zbirka</span><b id="collectionCount">0 predmetov</b></div>
           <div id="collectionItems" class="collection-items" aria-live="polite"></div>
           <p id="collectionEmpty">Nagrade: 💎 vsakih 3.000 točk · 🥇 za 10 pravilnih · 🥈 za 9 · 🥉 za 8</p>
           <div class="progress-actions">
@@ -63,7 +88,7 @@
       <section id="game" class="screen game-screen hidden" aria-live="polite">
         <header class="game-header">
           <button id="backBtn" class="icon-button" aria-label="Nazaj na začetek">‹</button>
-          <div class="brand-mini">🚀 <span>Brinina<br /><b>poštevanka</b></span></div>
+          <div class="brand-mini">🚀 <span>Raketna<br /><b>poštevanka</b></span></div>
           <button id="soundBtn" class="icon-button sound-on" aria-label="Vklopi ali izklopi zvok">♫</button>
         </header>
         <section class="stats" aria-label="Rezultat igre">
@@ -103,7 +128,7 @@
         <div class="result-stars" aria-hidden="true">✦ ★ ✦</div>
         <div class="result-mascot" aria-hidden="true">🚀</div>
         <p class="eyebrow">KONEC VOŽNJE</p>
-        <h2 id="result-title">Odlično, Brina!</h2>
+        <h2 id="result-title">Odlično!</h2>
         <p id="resultMessage">Tvoja raketa je letela čisto do zvezd.</p>
         <div class="final-score"><span>TVEJ REZULTAT</span><b id="finalScore">120</b><small>točk</small></div>
         <div id="rewardPanel" class="reward-panel hidden"><span id="rewardTier">NOV PREDMET ZA POTOVANJE!</span><div id="rewardItems" class="reward-items"></div></div>
