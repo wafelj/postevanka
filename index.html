@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="sl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#5b4cdb" />
+    <title>Brinina poštevanka</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section id="welcome" class="screen welcome-screen" aria-labelledby="welcome-title">
+        <div class="cloud cloud-one"></div><div class="cloud cloud-two"></div>
+        <div class="mascot" aria-hidden="true"><span>🚀</span><i>★</i></div>
+        <p class="eyebrow">BRININA HITRA MISEL</p>
+        <h1 id="welcome-title">Poštevanka<br /><em>na raketni pogon!</em></h1>
+        <p class="intro">Reši 10 različnih naključnih računov<br />in zbiraj opremo za potovanje med zvezdami!</p>
+        <section class="home-stats" aria-label="Skupni napredek">
+          <div><span>SKUPNE TOČKE</span><b id="totalScore">0</b></div>
+          <div><span>NASLEDNJI 💎 PREDMET</span><b><i id="pointsToDiamond">500</i> točk</b></div>
+        </section>
+        <section id="missionSummary" class="mission-summary hidden" aria-live="polite">
+          <b id="summaryTitle">Misija končana!</b>
+          <span id="summaryText"></span>
+        </section>
+
+        <div class="setup-card">
+          <div class="setting-group">
+            <span class="setting-label">Kaj vadiva?</span>
+            <div class="mode-picks" role="radiogroup" aria-label="Vrsta računov">
+              <button class="mode active" data-mode="multiply" role="radio" aria-checked="true"><b>✖ Poštevanka</b><small>npr. 5 × 3</small></button>
+              <button class="mode" data-mode="divide" role="radio" aria-checked="false"><b>➗ Deljenje</b><small>npr. 54 ÷ 9</small></button>
+            </div>
+          </div>
+          <div class="setting-group">
+            <span class="setting-label">Kako hitro greva?</span>
+            <div class="difficulty-picks" role="radiogroup" aria-label="Težavnost">
+              <button class="difficulty active" data-seconds="15" data-name="Mirno" data-multiplier="1" role="radio" aria-checked="true"><b>🐢 Mirno</b><small>15 s · točke ×1</small></button>
+              <button class="difficulty" data-seconds="11" data-name="Hitro" data-multiplier="1.5" role="radio" aria-checked="false"><b>⚡ Hitro</b><small>11 s · točke ×1,5</small></button>
+              <button class="difficulty" data-seconds="8" data-name="Super hitra" data-multiplier="2" role="radio" aria-checked="false"><b>🔥 Super hitra</b><small>8 s · točke ×2</small></button>
+              <button class="difficulty no-timer" data-seconds="0" data-name="Brez hitenja" data-multiplier="0" data-timeless="true" role="radio" aria-checked="false"><b>🌙 Brez hitenja</b><small>brez časa · brez točk</small></button>
+            </div>
+          </div>
+          <button id="startBtn" class="primary-button">Začni pustolovščino <span>→</span></button>
+        </div>
+        <section class="collection-card" aria-labelledby="collection-title">
+          <div class="collection-heading"><span id="collection-title">🧳 Brinina potovalna zbirka</span><b id="collectionCount">0 predmetov</b></div>
+          <div id="collectionItems" class="collection-items" aria-live="polite"></div>
+          <p id="collectionEmpty">Nagrade: 💎 vsakih 3.000 točk · 🥇 za 10 pravilnih · 🥈 za 9 · 🥉 za 8</p>
+          <div class="progress-actions">
+            <button id="exportProgressBtn" type="button">↓ Izvozi napredek</button>
+            <button id="importProgressBtn" type="button">↑ Uvozi napredek</button>
+            <input id="progressFileInput" type="file" accept="application/json,.json" hidden />
+          </div>
+          <button id="resetCollectionBtn" class="reset-collection" type="button">Ponastavi napredek</button>
+        </section>
+        <p class="tiny-note">Namig: odgovoriš lahko s tipkovnico in tipko Enter.</p>
+      </section>
+
+      <section id="game" class="screen game-screen hidden" aria-live="polite">
+        <header class="game-header">
+          <button id="backBtn" class="icon-button" aria-label="Nazaj na začetek">‹</button>
+          <div class="brand-mini">🚀 <span>Brinina<br /><b>poštevanka</b></span></div>
+          <button id="soundBtn" class="icon-button sound-on" aria-label="Vklopi ali izklopi zvok">♫</button>
+        </header>
+        <section class="stats" aria-label="Rezultat igre">
+          <div class="stat score-stat"><span>TOČKE</span><b id="score">000</b></div>
+          <div class="stat streak-stat"><span>NIZ</span><b><i id="streakFire">🔥</i> <span id="streak">0</span></b></div>
+          <div class="stat lives-stat"><span>ŽIVLJENJA</span><b id="lives" aria-label="3 življenja">❤️ ❤️ ❤️</b></div>
+        </section>
+
+        <div class="level-line"><span id="roundLabel">RAČUN 1</span><span id="difficultyLabel">MIRNO</span></div>
+        <div class="timer-wrap" aria-label="Preostali čas"><div id="timerBar" class="timer-bar"></div></div>
+        <div class="timer-readout"><span>ČAS</span><b id="timeText">12.0</b><small>s</small></div>
+
+        <section class="question-zone">
+          <div id="cheerBubble" class="cheer-bubble">Pripravljena?</div>
+          <div class="rocket-trail" aria-hidden="true">✦ ✧ ✦</div>
+          <div class="equation" aria-label="Račun"><span id="factorA">4</span><i id="operator">×</i><span id="factorB">7</span><i>=</i><b>?</b></div>
+          <form id="answerForm" autocomplete="off">
+            <label class="sr-only" for="answerInput">Tvoj odgovor</label>
+            <input id="answerInput" inputmode="numeric" pattern="[0-9]*" type="text" maxlength="3" placeholder="?" autofocus />
+            <button class="answer-button" type="submit">Preveri <span>↵</span></button>
+          </form>
+          <div id="numberGrid" class="number-grid" aria-label="Izberi odgovor od 1 do 100"></div>
+          <p class="keyboard-hint">Vpiši odgovor in pritisni <kbd>Enter</kbd></p>
+        </section>
+      </section>
+
+      <section id="review" class="screen review-screen hidden" aria-labelledby="review-title">
+        <div class="review-rocket" aria-hidden="true">🚀</div>
+        <p class="eyebrow">KRATEK TRENING</p>
+        <h2 id="review-title">Pred vzletom<br />ponoviva tole</h2>
+        <p id="reviewIntro">To so računi, ki so ti nazadnje povzročali največ težav.</p>
+        <div id="reviewList" class="review-list" aria-live="polite"></div>
+        <button id="reviewStartBtn" class="primary-button">Razumem, začniva! <span>→</span></button>
+      </section>
+
+      <section id="result" class="screen result-screen hidden" aria-labelledby="result-title">
+        <div class="result-stars" aria-hidden="true">✦ ★ ✦</div>
+        <div class="result-mascot" aria-hidden="true">🚀</div>
+        <p class="eyebrow">KONEC VOŽNJE</p>
+        <h2 id="result-title">Odlično, Brina!</h2>
+        <p id="resultMessage">Tvoja raketa je letela čisto do zvezd.</p>
+        <div class="final-score"><span>TVEJ REZULTAT</span><b id="finalScore">120</b><small>točk</small></div>
+        <div id="rewardPanel" class="reward-panel hidden"><span id="rewardTier">NOV PREDMET ZA POTOVANJE!</span><div id="rewardItems" class="reward-items"></div></div>
+        <div class="result-grid"><div><span>NAJDALJŠI NIZ</span><b id="bestStreak">🔥 6</b></div><div><span>PRAVILNI</span><b id="correctCount">8 / 10</b></div></div>
+        <button id="againBtn" class="primary-button">Nova misija <span>↻</span></button>
+        <button id="settingsBtn" class="text-button">Na domačo stran</button>
+      </section>
+    </main>
+    <div id="burst" class="burst-layer" aria-hidden="true"></div>
+    <script src="game.js"></script>
+  </body>
+</html>
