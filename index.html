@@ -14,22 +14,32 @@
     <main class="app-shell">
       <section id="name" class="screen name-screen hidden" aria-labelledby="name-title">
         <div class="mascot" aria-hidden="true"><span>🚀</span><i>★</i></div>
-        <p class="eyebrow">PRVA ODPRAVA</p>
+        <p id="nameEyebrow" class="eyebrow">PRVA ODPRAVA</p>
         <h1 id="name-title">Ustvari svojo<br /><em>vesoljsko izkaznico</em></h1>
-        <p class="intro">Izberi astronavta in vpiši podatke<br />za svojo prvo odpravo.</p>
+        <p id="nameIntro" class="intro">Izberi avatar in vpiši podatke<br />za svojo prvo odpravo.</p>
         <form id="nameForm" class="name-form" autocomplete="off">
           <label class="sr-only" for="nameInput">Tvoje ime</label>
           <input id="nameInput" type="text" maxlength="24" placeholder="Vpiši ime" required autofocus />
           <label class="sr-only" for="ageInput">Tvoja starost</label>
           <input id="ageInput" type="number" min="3" max="18" inputmode="numeric" placeholder="Koliko si star/-a?" required />
           <fieldset class="avatar-picks">
-            <legend>Izberi astronavta</legend>
+            <legend>Izberi avatar</legend>
             <button type="button" class="avatar-pick active" data-avatar="🧑‍🚀" aria-label="Astronavt" aria-pressed="true">🧑‍🚀</button>
             <button type="button" class="avatar-pick" data-avatar="👩‍🚀" aria-label="Astronavtka" aria-pressed="false">👩‍🚀</button>
             <button type="button" class="avatar-pick" data-avatar="👨‍🚀" aria-label="Astronavt" aria-pressed="false">👨‍🚀</button>
             <button type="button" class="avatar-pick" data-avatar="🤖" aria-label="Robot astronavt" aria-pressed="false">🤖</button>
+            <button type="button" class="avatar-pick" data-avatar="🦊" aria-label="Lisica" aria-pressed="false">🦊</button>
+            <button type="button" class="avatar-pick" data-avatar="🐼" aria-label="Panda" aria-pressed="false">🐼</button>
+            <button type="button" class="avatar-pick" data-avatar="🐱" aria-label="Muca" aria-pressed="false">🐱</button>
+            <button type="button" class="avatar-pick" data-avatar="🐶" aria-label="Kuža" aria-pressed="false">🐶</button>
+            <button type="button" class="avatar-pick" data-avatar="🦄" aria-label="Samorog" aria-pressed="false">🦄</button>
+            <button type="button" class="avatar-pick" data-avatar="🧙" aria-label="Čarovnik ali čarovnica" aria-pressed="false">🧙</button>
+            <button type="button" class="avatar-pick" data-avatar="🧚" aria-label="Vila" aria-pressed="false">🧚</button>
+            <button type="button" class="avatar-pick" data-avatar="🧑‍🎨" aria-label="Umetnik ali umetnica" aria-pressed="false">🧑‍🎨</button>
+            <button type="button" class="avatar-pick" data-avatar="🦸" aria-label="Superjunak ali superjunakinja" aria-pressed="false">🦸</button>
+            <button type="button" class="avatar-pick" data-avatar="🧑‍🍳" aria-label="Kuhar ali kuharica" aria-pressed="false">🧑‍🍳</button>
           </fieldset>
-          <button class="primary-button" type="submit">Začni potovanje <span>→</span></button>
+          <button class="primary-button" type="submit"><span id="profileSubmitText">Začni potovanje</span> <i aria-hidden="true">→</i></button>
         </form>
       </section>
 
@@ -39,10 +49,10 @@
         <p class="eyebrow">RAKETNA POŠTEVANKA</p>
         <h1 id="welcome-title">Poštevanka<br /><em>na raketni pogon!</em></h1>
         <p class="intro">Reši 10 različnih naključnih računov<br />in zbiraj opremo za potovanje med zvezdami!</p>
-        <section class="identity-card" aria-label="Vesoljska izkaznica">
+        <button id="identityCard" class="identity-card" type="button" aria-label="Vesoljska izkaznica. Klikni za urejanje profila">
           <span id="playerAvatar" class="profile-avatar" aria-hidden="true">🧑‍🚀</span>
-          <div><span>VESOLJSKA IZKAZNICA</span><b id="cardName">—</b><small id="cardAge">— let</small></div>
-        </section>
+          <span class="identity-details"><span>VESOLJSKA IZKAZNICA <i>✎</i></span><b id="cardName">—</b><small id="cardAge">— let</small></span>
+        </button>
         <section class="home-stats" aria-label="Skupni napredek">
           <div><span>SKUPNE TOČKE</span><b id="totalScore">0</b></div>
           <div><span>NASLEDNJI 💎 PREDMET</span><b><i id="pointsToDiamond">500</i> točk</b></div>
